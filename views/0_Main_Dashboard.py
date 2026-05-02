@@ -13,19 +13,21 @@ if 'tp' not in st.session_state:
     st.session_state['tp'] = 0.025
 
 # Sidebar for Project Inputs
-with st.sidebar:
-    st.header("Project Parameters")
+with st.sidebar.expander("Project Parameters"):
     rainfall = st.slider("Rainfall Event (mm)", 0, 150, 25)
     agri_land = st.slider("Agricultural Land (%)", 0, 100, 30)
-    
-    st.subheader("Water Chemistry")
+    st.markdown("---")
+
+with st.sidebar.expander("Water Chemistry"):
+    # st.subheader("Water Chemistry")
     ph = st.slider("pH Level", 6.5, 9.5, 8.1)
     ca = st.number_input("Calcium (mg/L)", value=40.0)
     # Use session state for Phosphorus value
     tp = st.number_input("Total Phosphorus (mg/L)", value=st.session_state['tp'], format="%.3f")
 
     st.markdown("---")
-    st.subheader("🧪 Virtual Jar Test")
+with st.sidebar.expander("🧪 Virtual Jar Test"):
+    # st.subheader("🧪 Virtual Jar Test")
     st.write("Simulate chemical dosing to reduce Phosphorus.")
     
     # Input for chemical dosage
@@ -41,6 +43,15 @@ with st.sidebar:
         # Update session state and rerun to refresh the dashboard with new TP
         st.session_state['tp'] = final_p
         st.rerun()
+with st.sidebar.expander("📝 Log Field Observations"):
+    secchi_depth = st.number_input("Secchi Disk Depth (m)", value=2.0, step=0.1)
+    temp_surface = st.number_input("Surface Temp (°C)", value=22.0)
+    temp_1m = st.number_input("1m Depth Temp (°C)", value=20.5)
+    
+    # Calculate Thermocline Strength
+    temp_gradient = temp_surface - temp_1m
+    if temp_gradient > 1.0:
+        st.warning("Stratification Detected: High Hypoxia Risk.")
 
 # --- EXECUTION LOGIC ---
 c_factor = get_runoff_coefficient(agri_land)
