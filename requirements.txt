@@ -1,0 +1,10 @@
+pandas>=2.0.0
+numpy>=1.24.0
+streamlit>=1.30.0
+plotly>=5.15.0
+scipy>=1.10.
+# whiteboxtools>=2.3.0 # "Real-time Geospatial" scopeneed to download the WhiteboxTools Binary (a small folder) and put it in your project directory.
+
+whitebox
+
+
