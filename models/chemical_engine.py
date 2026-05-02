@@ -38,3 +38,24 @@ def simulate_lake_stability(tp_mg_l, ca_mg_l):
         return "Sensitive", "orange"
     else:
         return "Unstable (High Bloom Risk)", "red"
+    
+
+# virtual jar test - "what if simulator"
+
+def virtual_jar_test(initial_tp, calcium_dose, ph_level):
+    """
+    Simulates a chemical precipitation event.
+    Formula: Ca5OH(PO4)3 formation is pH dependent.
+    """
+    # Efficiency factor based on pH (ideal range 10-12 for lime)
+    # For natural lakes (pH 7-8), efficiency is lower but still present.
+    efficiency = 0.05 * (ph_level - 6) if ph_level > 6 else 0
+    
+    # Calculate precipitated Phosphorus (mg/L)
+    precipitated_p = initial_tp * (calcium_dose / 100) * efficiency
+    
+    # Ensure we don't remove more than exists
+    final_tp = max(0, initial_tp - precipitated_p)
+    removal_rate = ((initial_tp - final_tp) / initial_tp) * 100
+    
+    return final_tp, removal_rate
