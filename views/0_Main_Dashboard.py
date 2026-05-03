@@ -43,15 +43,6 @@ with st.sidebar.expander("🧪 Virtual Jar Test"):
         # Update session state and rerun to refresh the dashboard with new TP
         st.session_state['tp'] = final_p
         st.rerun()
-with st.sidebar.expander("📝 Log Field Observations"):
-    secchi_depth = st.number_input("Secchi Disk Depth (m)", value=2.0, step=0.1)
-    temp_surface = st.number_input("Surface Temp (°C)", value=22.0)
-    temp_1m = st.number_input("1m Depth Temp (°C)", value=20.5)
-    
-    # Calculate Thermocline Strength
-    temp_gradient = temp_surface - temp_1m
-    if temp_gradient > 1.0:
-        st.warning("Stratification Detected: High Hypoxia Risk.")
 
 # --- EXECUTION LOGIC ---
 c_factor = get_runoff_coefficient(agri_land)

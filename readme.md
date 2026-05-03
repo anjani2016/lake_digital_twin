@@ -1,4 +1,11 @@
 
+
+## Pyenv
+
+## Docker build 
+- deactivate virtual environment. go to project directory
+- Build and Run Command ```docker build -t lake-digital-twin:v2 .```
+- Run the Container: ```docker run -p 8501:8501 lake-digital-twin:v2```
 ## Folder Structure
 
 hydro_twin_project/         <-- Root Folder
@@ -56,3 +63,11 @@ In our app.py, we previously used a red plane to show hypoxia. For a professiona
 Primary Source: Ontario GeoHub - Bathymetry Point
 
 Validation Logic: Interpolation assumes a continuous benthic surface; however, "Bathymetry Index" data should be checked for the SURVEY_METHOD (e.g., Echo-sounder vs. Lidar) to quantify uncertainty.
+
+
+2. Measuring & Mapping Volunteer Work
+- As a Lakes Canada volunteer, the data you collect is used by the Dorset Environmental Science Centre (DESC) to detect early changes in water quality. Here is how we map your specific tools to the project logic:  
+
+    - Secchi Disk: You are measuring water clarity, which is a proxy for the concentration of suspended particles and algae. In your twin, this depth value can be used to validate the predicted "Precipitation Zone" from your chemical engine.  
+    - Temperature Gradient: By taking readings at the surface and 1m, you are identifying thermal stratification. Your Digital Twin can use this "Delta T" to model the Thermocline, which is essential for the Phase 1: 3D Volumetric Modeling to determine if oxygen is being cut off from the lake floor.  
+    - Protocol Alignment: Your use of weights and clean rope to sink the disk matches the official Lake Partner Program (LPP) protocols for inland lakes. 
