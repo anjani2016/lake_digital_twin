@@ -1,16 +1,16 @@
 # Changelog - Lake Digital Twin
 
-## [v2] - 2026-05-03
+## [v2.2] - 2026-05-03
 ### Added
-- **Volunteer Field Entry**: Integrated `2_Field_Entry.py` into the main navigation sidebar.
-- **Geospatial Logging**: Added interactive map support using `folium` for volunteers to log sampling locations.
-- **Dependencies**: Added `streamlit-folium` and `folium` to `requirements.txt`.
+- **Project Charter**: New page `1_Project_Charter.py` added to the Overview section.
 
 ### Changed
-- **App Navigation**: Reorganized `app.py` into distinct sections: Lake Dashboard, Field Operations, and Risk Analysis.
-- **Dependency Management**: Fixed syntax in `requirements.txt` to ensure clean Docker builds.
+- **Reindexed Navigation**: Reorganized the app structure to follow the new numerical indexing (0-3).
+- **Page Renames**: Moved Predictive Risk Model to `3_Monte_Carlo_Sim.py` to maintain sequential flow.
 
 ---
+
+## [v2.1] - 2026-05-03
 
 ## [v1] - 2026-05-01
 ### Added
